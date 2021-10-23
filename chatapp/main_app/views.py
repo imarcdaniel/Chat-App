@@ -10,12 +10,15 @@ def signup(request):
     # This is how to create a 'user' form object
     # that includes the data from the browser
     form = UserCreationForm(request.POST)
+    print(' step1')
     if form.is_valid():
       # This will add the user to the database
       user = form.save()
       # This is how we log a user in via code
+      print('we are in the first if statement')
       login(request, user)
-      return redirect('index')
+      print('it should hit redirect now')
+      return redirect('home')
     else:
       error_message = 'Invalid sign up - try again'
   # A bad POST or a GET request, so render signup.html with an empty form
