@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chat App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+ <div class="container">
+
+    <header class=" navbar-fixed">
+        <nav class="container">
+            <div class="nav-wrapper  blue-grey darken-4">
+                <ul>
+                    <li><a href="/" class="left brand-logo">&nbsp;&nbsp;We Chat</a></li>
+                </ul>
+                <ul class="right">
+                    <!-- changes below -->
+                    <li><a href="{% url 'home' %}">About</a></li>
+    
+                      <li><a href="#">Start</a></li>
+                      <li><a href="#">Your Histroy</a></li>
+                      <li><a href="#">Add a Cat</a></li>
+    
+                      <li><a href="{% url 'logout' %}">Log Out</a></li>
+    
+                      <li><a href="{% url 'login' %}">Log In</a></li>
+                      <li><a href="{% url 'signup' %}">Sign Up</a></li>
+    
+                  </ul>
+            </div>
+        </nav>
+    </header>
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer class="page-footer  blue-grey darken-4">
+       <div class="right">All Rights Reserved, &copy; 2021 GetRandom Number &nbsp;</div>
+    </footer>
+ </div>
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      
+</body>
+</html>
