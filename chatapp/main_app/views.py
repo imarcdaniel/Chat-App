@@ -4,32 +4,6 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Channel
 # Create your views here.
 
-# class Channel:
-#   def __init__(self, name, creationdate):
-#     self.name = name
-#     self.creationdate = creationdate
-
-# channels = [
-#   Channel('Sei43', 'today' ),
-#   Channel('Sports', 'yesterday'),
-#   Channel('News', 'last week',)
-# ]
-
-
-# class Message:
-#   def __init__(self, body, datesent, user_id, channelid):
-#     self.body = body
-#     self.datesent = datesent
-#     self.user = user_id
-#     self.channelid= channelid
-
-
-# messages = [
-#     Message('Lorem Ipsum has been the industrys standard dummy text ever since the ', 'today', 'Test1'),
-#     Message('it has survived not only five centuries, but also the leap into electronic typesetting', 'today', 'Test2'),
-#     Message('remaining essentially unchanged. It was popularised in the 1960s',
-#             'today', 'Test3')
-# ]
 
 def signup(request):
     error_message = ''
@@ -57,10 +31,13 @@ def signup(request):
 def home(request):
     return render(request, 'home.html')
 
+def about(request):
+    return render(request, 'about.html')    
+
 
 def myhome(request):
-    # channels = Channel.objects.all
-    print("this the channel", channels)
+    channels = Channel.objects.all
+    print("These are the user channels", channels)
     return render(request, 'channels/index.html', {"channels": channels})
 
     # def myhome(request):
@@ -71,3 +48,7 @@ def myhome(request):
     # def message_in_channel(request):
     #   print("this the channel", channels)
     # return render(request, 'channels/index.html', {"channels": channels})
+
+def channel_detail(request):
+    # channel = Channel.objects.get(id = channel_id)
+    return render(request, 'channels/detail.html')

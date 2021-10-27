@@ -7,45 +7,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Chat App</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
-<body>
+<body class="">
  <div class="container">
 
     <header class=" navbar-fixed">
-        <nav class="container">
-            <div class="nav-wrapper  blue-grey darken-4">
+        <nav class="container grey darken-4">            
                 <ul>
-                    <li><a href="/" class="left brand-logo">&nbsp;&nbsp;We Chat</a></li>
+                    <li><a href="/" class="left brand-logo">We Chat</a></li>
                 </ul>
                 <ul class="right">
-                    <!-- changes below -->
-                    <li><a href="{% url 'home' %}">About</a></li>
-    
-                      <li><a href="{% url 'myhome' %}">Start</a></li>
-                      <li><a href="#">Your Histroy</a></li>
-                      <li><a href="#">add something</a></li>
-    
-                      <li><a href="{% url 'logout' %}">Log Out</a></li>
-    
-                      <li><a href="{% url 'login' %}">Log In</a></li>
+                   
+                      {%if user.is_authenticated%}
+                      <li><a href="{% url 'myhome' %}"><i class="material-icons">message</i></a></li>
+                      <li><a href="{% url 'logout' %}"><i class="material-icons">logout</i></a></li>
+                        {%else %}
+                      <li><a href="{% url 'login' %}"> <i class="material-icons">login</i></a></li>
                       <li><a href="{% url 'signup' %}">Sign Up</a></li>
-    
+                        {%endif%}
                   </ul>
-            </div>
+            
         </nav>
     </header>
     <main class="container">
         {% block content %}
         {% endblock %}
     </main>
-    <footer class="page-footer  blue-grey darken-4">
-       <div class="right">All Rights Reserved, &copy; 2021 GetRandom Number &nbsp;</div>
-    </footer>
+
+
+
+
+    <footer  style="position:fixed;bottom:0;left:0;width:100%;">
+           
+       
+      <nav  class="footer-copyright grey lighten-2 footer-fixed " >
+        <ul >
+            <li><a href="/" class ="black-text"><i class="material-icons left">home</i></a></li>
+            <li><a href="#" class ="black-text"><i class="material-icons left">message</i></a></li>
+            <li><a href="#" class ="black-text"><i class="material-icons left">search</i></a></li>
+            <li><a href="#" class ="black-text"><i class="material-icons left">menue</i></a></li>
+            <li><a href="#" class ="black-text"><i class="material-icons left">settings</i></a></li>
+            
+            
+          </ul>
+      </nav>
+    
+</footer>
+
+
+ 
+
+    
  </div>
-      
+
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-      
 </body>
 </html>
