@@ -2,16 +2,17 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<a class="btn-floating btn-large waves-effect waves-light grey "><i class="material-icons">face</i></a>
+<!-- <a class="btn-floating btn-large waves-effect waves-light grey "><i class="material-icons">face</i></a> -->
+<a href="/chatapp/new"class="btn-floating btn-large waves-effect waves-light grey "><i class="material-icons">add</i></a>
 <h5 class="grey-text text-lighten-2">text-channels</h5>
-<a href="/chatapp/new"class="btn-floating btn-large waves-effect waves-light grey ">Create New Channel</a>
+
 
 {% for ch in channels %}
 <div class="row grey darken-3 grey-text text-lighten-2 hoverable">
     <div class="col s11"> <p>#{{ch.name}}</p>
     </div>
     
-    <div class="col s1">  <a href="/chatapp/channels/{{ ch.id }}/"><i class="small material-icons right">chevron_right</i></a> 
+    <div class="col s1 ">  <a href="/chatapp/channels/{{ ch.id }}/"><i class="small material-icons right grey-text">sms</i></a> 
     </div>
 
 </div>
