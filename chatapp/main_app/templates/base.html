@@ -23,7 +23,7 @@
                 <ul class="right">
                    
                       {%if user.is_authenticated%}
-                      <li><a href="{% url 'myhome' %}"><i class="material-icons">message</i></a></li>
+                      <li><a href="{% url 'myhome' %}"><i class="material-icons">contact_mail</i></a></li>
                       <li><a href="{% url 'logout' %}"><i class="material-icons">logout</i></a></li>
                         {%else %}
                       <li><a href="{% url 'login' %}"> <i class="material-icons">login</i></a></li>
@@ -40,17 +40,16 @@
 
 
 
-
+    <div style= "height: 300px"></div>
     <footer  style="position:fixed;bottom:0;left:0;width:100%;">
-           
-       
+               
       <nav  class="footer-copyright grey lighten-2 footer-fixed " >
         <ul >
-            <li><a href="{% url "home" %}" class ="black-text"><i class="material-icons left">home</i></a></li>
-            <li><a href="/chatapp/myhome"class ="black-text"><i class="material-icons left">message</i></a></li>
+            <li><a href="{% url 'home' %}" class ="black-text"><i class="material-icons left">home</i></a></li>
+            <li><a href="/chatapp/myhome" class ="black-text"> <i class="material-icons left">contact_mail</i></a></li>
             <li><a href="" class ="black-text"><i class="material-icons left">search</i></a></li>
-            <li><a href="{% url "home" %}" class ="black-text"><i class="material-icons left">menue</i></a></li>
-            <li><a href="{% url "home" %}"class ="black-text"><i class="material-icons left">settings</i></a></li>
+            <li><a href="{% url 'home' %}" class ="black-text"><i class="material-icons left">menue</i></a></li>
+            <li><a href="{% url 'home' %}" class ="black-text"><i class="material-icons left">settings</i></a></li>
             
             
           </ul>
@@ -65,6 +64,7 @@
  </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/jquery-3.1.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/js/materialize.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  
 </body>
 </html>

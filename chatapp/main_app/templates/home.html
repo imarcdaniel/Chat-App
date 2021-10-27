@@ -1,8 +1,25 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 
-<h4 class= "grey-text text-lighten-2">About We Chat</h1>
-<hr />
-<p class= "grey-text text-lighten-2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore sequi voluptas quas. Eos tenetur rerum ad accusantium neque non suscipit perferendis sequi aut? Totam, voluptatibus!</p>
+<h4 class= "grey-text text-lighten-2 center-align">About We Chat</h1>
+
+    <div class="row">
+        <div class="col s4 offset-s4">
+            <img src="{% get_static_prefix%}/images/pgn-sml.png " alt="" class="responsive-img circle">
+        </div>
+        <div class="col s7">
+            <div class="valign-wrapper">
+                
+            </div>
+            
+        </div>
+    </div>
+    
+
+<h6 class ="grey-text text-lighten-3 center-align ">Our objective is to make stayin in touch with the people you care about in your everyday life <span style="color:rgb(105, 105, 236)">easier</span>, <span style="color: rgb(240, 160, 173)">faster</span>, and more <span style="color: rgb(197, 61, 197)">reliable</span>....</h6>
+
+
+
 <a href="{% url 'about' %}" class="">Meet the DEVs</a>
 {% endblock %}
