@@ -2,7 +2,51 @@
 {% block content %}
 
 
-<p class="z-depth-3 grey-text text-lighten-2">Hey Whatcha Doin??</p>
 
+{% for m in messages_home %}
+      <div class="col m12 col s12">
+        <div class="box-blue">
+          <img class="pull-right" ng-src="{{message.imageUrl}}" />
+          <p>{{ m.body}}</p>
+          <div>
+            <strong>{{m.user.username}}</strong>&nbsp;
+            <span class="date">{{m.date}}</span>
+          </div>
+        </div>
+      </div>
+{% endfor %}
+{% for a in messages_away %}
+      <div class="col m12 col s12">
+        <div class="box-gray">
+          <img class=" pull-left" ng-src="{{message.imageUrl}}" />
+          <p>{{ a.body}}</p>
+          <div>
+            <strong>{{a.user.username}}</strong>&nbsp;
+            <span class="date">{{a.date}}</span>
+        </div> 
+     </div>
+</div> 
+    
+ {% endfor %}       
 
+      </div>
+    </div>
+  
+
+    <div class="row">
+      <form method="POST" action="/chatapp/channels/submit_message/" style="display:inherit">
+         {% csrf_token %}
+        <div class="col m9 s9" >
+          <input type="text" name:"body" placeholder="Write a mensaje"/>
+          <input name:"channel_id" value={{ channel_id }}/>
+        </div>
+        <div class="col m3 s3" >
+       
+          <button type="submit" class="btn chat-submit-button"><i class="material-icons">send</i></button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</body>
 {% endblock %}
