@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from .models import Channel
+from .models import Channel, Message, User
 # Create your views here.
 
 # class Channel:
@@ -59,15 +59,42 @@ def home(request):
 
 
 def myhome(request):
-    # channels = Channel.objects.all
-    print("this the channel", channels)
+    channels = Channel.objects.all
     return render(request, 'channels/index.html', {"channels": channels})
 
-    # def myhome(request):
-    #   # channels = Channel.objects.all
-    # print("this the channel", channels)
-    # return render(request, 'channels/index.html', {"channels": channels})
 
-    # def message_in_channel(request):
-    #   print("this the channel", channels)
-    # return render(request, 'channels/index.html', {"channels": channels})
+def channel_new(request):
+    return render(request, 'channels/new.html', {})
+
+
+def channel_create(request):
+    createchannel = Channel.objects.create(
+        name=request.POST['name'],
+        creationdate=request.POST['date'],
+    )
+    return redirect(f'/chatapp/channels/{createchannel.id}')
+
+
+def load_channel(request, channels_id):
+    channels = Channel.objects.get(id=channels_id)
+    messages = Message.objects.filter(channel_id=channels_id)
+    return render(request, 'channels/index.html', {"channels": messages})
+
+
+def add_a_contact(request, name):
+    username = request.user.id
+    id = getUserId(username)
+    contact = UserProfile.objects.get(username=name)
+    curr_user = UserProfile.objects.get(id=id)
+    print(curr_user.name)
+    ls = curr_user.friends_set.all()
+    flag = 0
+    for username in ls:
+        if username.friend == friend.id:
+            flag = 1
+            break
+    if flag == 0:
+        print("Friend Added!!")
+        curr_user.friends_set.create(friend=friend.id)
+        friend.friends_set.create(friend=id)
+    return redirect("/search")
