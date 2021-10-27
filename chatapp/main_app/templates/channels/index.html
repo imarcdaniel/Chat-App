@@ -1,15 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>index</h1>
+<a class="btn-floating btn-large waves-effect waves-light grey "><i class="material-icons">face</i></a>
+<h5 class="grey-text text-lighten-2">text-channels</h5>
 
 {% for ch in channels %}
-    <div class="card">
-        <div class="card-content">
-            <span class="card-title">{{ ch.name }}</span>
-            <p>Creation Date: {{ ch.creationdate }}</p>
-    
-        </div>
+<div class="row grey darken-3 grey-text text-lighten-2 hoverable">
+    <div class="col s11"> <p>#{{ch.name}}</p>
     </div>
+    
+    <div class="col s1">  <a href="{% url 'channel' %}"><i class="small material-icons right">chevron_right</i></a> 
+    </div>
+
+</div>
+
+
+
+
+
+
+  
+
 {% endfor %}
 {% endblock %}
