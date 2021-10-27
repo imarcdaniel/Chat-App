@@ -56,21 +56,21 @@ def channel_create(request):
 
 
 def load_channel(request, channels_id):
-    channel_id = Channel.objects.get(id=channels_id)
+    channel = Channel.objects.get(id=channels_id)
     messages_of_loggeg_in_user = Message.objects.filter(
         channel_id=channels_id).filter(user_id=request.user)
     messages_of_other_user = Message.objects.filter(
         channel_id=channels_id).exclude(user_id=request.user)
-    print(messages_of_other_user)
-    return render(request, 'channels/detail.html', {"messages_home": messages_of_loggeg_in_user, "messages_away": messages_of_other_user, "channel_id": channel_id})
+    print(channel)
+    return render(request, 'channels/detail.html', {"messages_home": messages_of_loggeg_in_user, "messages_away": messages_of_other_user, "channel": channel})
 
 
 def message_create(request):
     newmessage = Message.objects.create(
-        body=request.POST['body'],
+        body=request.POST["body"],
         channel_id=request.POST['channel_id'],
         user_id=request.user.id,
-        creationdate=timezone.now
+        date=timezone.now
     )
     return redirect(request.META['HTTP_REFERER'])
 

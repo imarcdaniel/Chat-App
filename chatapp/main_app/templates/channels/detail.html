@@ -34,11 +34,12 @@
   
 
     <div class="row">
+
       <form method="POST" action="/chatapp/channels/submit_message/" style="display:inherit">
          {% csrf_token %}
         <div class="col m9 s9" >
-          <input type="text" name:"body" placeholder="Write a mensaje"/>
-          <input name:"channel_id" value={{ channel_id }}/>
+          <input type="text" name="body" placeholder="Write a message"/>
+          <input type="hidden" name="channel_id" value={{ channel.id }} />
         </div>
         <div class="col m3 s3" >
        
