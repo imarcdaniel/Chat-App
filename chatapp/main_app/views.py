@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from .models import Channel, Message, User
+from .models import Channel, Contact, Message, User
 from django.utils import timezone
 # Create your views here.
 
@@ -78,23 +78,19 @@ def message_create(request):
 def channel_detail(request):
     return render(request, 'channels/detail.html')
 
-# def add_a_contact(request, name):
-#     username = request.user.id
-#     id = getUserId(username)
-#     contact = UserProfile.objects.get(username=name)
-#     curr_user = UserProfile.objects.get(id=id)
-#     print(curr_user.name)
-#     ls = curr_user.friends_set.all()
-#     flag = 0
-#     for username in ls:
-#         if username.friend == friend.id:
-#             flag = 1
-#             break
-#     if flag == 0:
-#         print("Friend Added!!")
-#         curr_user.friends_set.create(friend=friend.id)
-#         friend.friends_set.create(friend=id)
-#     return redirect("/search")
-#     # def message_in_channel(request):
-#     #   print("this the channel", channels)
-#     # return render(request, 'channels/index.html', {"channels": channels})
+
+def add_a_contact(request, clicked_user_id, current_user_id):
+    current_user_id = request.user.id,
+    clicked_user_id = User.objects.get(id=clicked_user_id).id
+    Contact.objects.get(id=current_user_id).users.add(clicked_user_id)
+    return redirect('detail', current_user_id=current_user_id)
+    # def message_in_channel(request):
+    #   print("this the channel", channels)
+    # return render(request, 'channels/index.html', {"channels": channels})
+
+
+def load_contacts(request):
+    contact = Contact.objects.filter(
+        creator_id=request.user.id).select_related("friend_set").values()
+    print("its contacts:", contact)
+    return render(request, 'contacts/all.html', {"contact": contact})
