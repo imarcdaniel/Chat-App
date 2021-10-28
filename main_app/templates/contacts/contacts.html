@@ -29,8 +29,7 @@
     
  {% endfor %}       
 
-      </div>
-    </div>
+     
   
 
     <div class="row">
@@ -39,7 +38,7 @@
          {% csrf_token %}
         <div class="col m9 s9" >
           <input type="text" name="body" placeholder="Write a message"/>
-          <input type="hidden" name="channel_id" value={{ channel.id }} />
+          <input type="hidden" name="channel_id" value="{{ channel.id }}" />
         </div>
         <div class="col m3 s3" >
        
