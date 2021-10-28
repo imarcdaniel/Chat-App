@@ -38,10 +38,12 @@ class Channel(models.Model):
         return self.name
 
 
-class Friend(models.Model):
-    users = models.ManyToManyField(UserProfile)
-    current_user = models.ForeignKey(
-        UserProfile, related_name="owner", null=True, on_delete=models.CASCADE)
+class Contact(models.Model):
+    created = models.DateField(auto_now_add=True, editable=False)
+    creator = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="contact_creator_set")
+    contact = models.ForeignKey(
+        User, blank=True, null=True, related_name="friend_set", on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.current_user}"
+        return f"{self.creator}"
