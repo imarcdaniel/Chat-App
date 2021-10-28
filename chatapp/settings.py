@@ -78,6 +78,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'we2chat',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': 'wechat',
     }
 }
 

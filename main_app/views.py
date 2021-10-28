@@ -3,6 +3,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from .models import Channel, Contact, Message, User
 from django.utils import timezone
+# from django.views.generic import DeleteView
 # Create your views here.
 
 
@@ -73,6 +74,12 @@ def message_create(request):
         date=timezone.now
     )
     return redirect(request.META['HTTP_REFERER'])
+
+def message_delete(request, message_id):
+    del_message = Message.objects.get(id = message_id)
+    del_message.delete()
+    return redirect(request.META['HTTP_REFERER'])
+
 
 
 def channel_detail(request):
