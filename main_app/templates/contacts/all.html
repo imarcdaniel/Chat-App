@@ -5,31 +5,28 @@
 
 
  <ul class="collection">
- {% for person in contact %}
+ {% for person in contactdetail %}
     <li class="collection-item avatar">
       <i class="material-icons ">account_circle</i>
-      <span class="title">{{person.contact_id}}</span>
-      <p>{{person.}} <br>
-         {{person.contact.user}}
+      <span class="title">{{person.contactusername}}</span>
+      <p>{{person.contactusername}} <br>
+         {{person.contactlastname}} - {{person.contactfirstname}}
       </p>
-      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+      <a href="#!" class="secondary-content"><i class="large material-icons">contact_mail</i></a>
     </li> 
 {% endfor %}
-    <div class="row">
-
-      <form method="POST" action="/chatapp/channels/submit_message/" style="display:inherit">
+    <div class="row footer-fixed ">
+      <form method="POST" action="/chatapp/contacts/new/" style="display:inherit">
          {% csrf_token %}
         <div class="col m9 s9" >
-          <input type="text" name="body" placeholder="Write a message"/>
+          <input type="text" name="body" placeholder="add a contact"/>
           <input type="hidden" name="channel_id" value={{ channel.id }} />
         </div>
         <div class="col m3 s3" >
-       
-          <button type="submit" class="btn chat-submit-button"><i class="material-icons">send</i></button>
+         <button type="submit" class="btn chat-submit-button"><i class="material-icons">add_box</i></button>
         </div>
       </form>
     </div>
-
   </div>
 </body>
 {% endblock %}

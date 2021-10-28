@@ -56,14 +56,31 @@ def channel_create(request):
     return redirect(f'/chatapp/channels/{createchannel.id}')
 
 
+def channel_edit(request, channels_id):
+    editchannel = Channel.objects.get(id=channels_id)
+    return render(request, 'channels/edit.html', {'channel': editchannel})
+
+
+def channel_update(request, channels_id):
+    updatechannel = Channel.objects.get(id=channels_id)
+    updatechannel.name = request.POST['name']
+    updatechannel.save()
+    channels = Channel.objects.all
+    return render(request, 'channels/index.html', {'channels': channels})
+
+
 def load_channel(request, channels_id):
     channel = Channel.objects.get(id=channels_id)
-    messages_of_loggeg_in_user = Message.objects.filter(
-        channel_id=channels_id).filter(user_id=request.user)
-    messages_of_other_user = Message.objects.filter(
-        channel_id=channels_id).exclude(user_id=request.user)
-    print(channel)
-    return render(request, 'channels/detail.html', {"messages_home": messages_of_loggeg_in_user, "messages_away": messages_of_other_user, "channel": channel})
+    messages = Message.objects.filter(
+        channel_id=channels_id).order_by('date').values()
+    messagesdetail = []
+    for m in messages:
+        userobject = User.objects.get(id=m['user_id'])
+        case = {"id": m['user_id'], "username": userobject.username,
+                "body": m['body'], "date": m['date']}
+        messagesdetail.append(case)
+
+    return render(request, 'channels/detail.html', {"messages": messages, "channel": channel, "messagesdetail": messagesdetail})
 
 
 def message_create(request):
@@ -75,11 +92,11 @@ def message_create(request):
     )
     return redirect(request.META['HTTP_REFERER'])
 
+
 def message_delete(request, message_id):
-    del_message = Message.objects.get(id = message_id)
+    del_message = Message.objects.get(id=message_id)
     del_message.delete()
     return redirect(request.META['HTTP_REFERER'])
-
 
 
 def channel_detail(request):
@@ -97,7 +114,15 @@ def add_a_contact(request, clicked_user_id, current_user_id):
 
 
 def load_contacts(request):
-    contact = Contact.objects.filter(
+    contacts = Contact.objects.filter(
         creator_id=request.user.id).select_related("friend_set").values()
-    print("its contacts:", contact)
-    return render(request, 'contacts/all.html', {"contact": contact})
+
+    contactdetail = []
+    for c in contacts:
+        userobject = User.objects.get(id=c['creator_id'])
+        contactobject = User.objects.get(id=c['contact_id'])
+        case = {"id": c['contact_id'], "contactusername": contactobject.username, "contactfirstname": contactobject.first_name, "contactlastname": contactobject.last_name, "contactemail": contactobject.email,
+                "creatorusername": userobject.username, "date": c['created']}
+        contactdetail.append(case)
+
+    return render(request, 'contacts/all.html', {"contacts": contacts,  "contactdetail": contactdetail})

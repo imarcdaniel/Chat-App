@@ -3,36 +3,32 @@
 
 
 
-{% for m in messages_home %}
+{% for m in messagesdetail %}
+  {% if m.id == request.user %}
       <div class="col m12 col s12">
         <div class="box-blue">
           <img class="pull-right" ng-src="{{message.imageUrl}}" />
           <p>{{ m.body}}</p>
           <div class ="grey-text text-darken-3">
-            <strong>{{m.user.username}}</strong>&nbsp;
+            <strong>{{message_info.username}}</strong>&nbsp;
             <span class="date">{{m.date}}</span>
-            <a  href="/chatapp/channels/{{m.id}}/delete"
-            class="btn-floating btn-small waves-effect waves-light transparent right"><i class="material-icons">delete</i></a>
+            <a href="/chatapp/channels/{{m.id}}/delete" class="btn-floating btn-small waves-effect waves-light transparent right"><i class="material-icons">delete</i></a>
           </div>
-          
         </div>       
       </div>
-{% endfor %}
-
-{% for a in messages_away %}
+  {% else %}
       <div class="col m12 col s12">
         <div class="box-gray">
           <img class=" pull-left" ng-src="{{message.imageUrl}}"/>
-          <p>{{ a.body}}</p>
+          <p>{{ m.body}}</p>
         <div class ="grey-text text-darken-3">
-            <strong>{{ a.user.username}}</strong>&nbsp;
-            <span class="date">{{a.date}}</span>
-            <a class="btn-floating btn-small waves-effect waves-light transparent left"><i class="material-icons">delete</i></a>
+            <strong>{{ m.username }}</strong>&nbsp;
+            <span class="date">{{m.date}}</span>
+            <a href="/chatapp/channels/{{m.id}}/delete" class="btn-floating btn-small waves-effect waves-light transparent left"><i class="material-icons">delete</i></a>
           </div> 
         </div>
-
       </div> 
-    
+  {% endif %}
  {% endfor %}       
 
  <div style ="height:50px"></div>

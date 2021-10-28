@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+
+<h5 class="grey-text text-lighten-2">Modify Channel</h5>
+      <div class="row grey-text text-lighten-4">
+        <form method="POST" action="/chatapp/channels/{{channel.id}}/submit_update_form/">
+          {% csrf_token %}
+          <div class="form-group">
+            Name: <input class="form-control grey-text text-lighten-2" name="name" value={{channel.name}} />
+          </div>
+          <div class="form-group">
+            Date: <input type="date" class="form-control grey-text text-lighten-2" name="date" />
+          </div>
+          
+          <div class="dropdown-divider"></div>
+          <button class="btn btn-primary py-3 px-5" type="submit">
+            update
+          </button>
+        </form>
+      </div>
+ 
+    {% endblock %}
+
