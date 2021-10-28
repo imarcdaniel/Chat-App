@@ -11,7 +11,7 @@ urlpatterns = [
     #
     path('channels/submit/', views.channel_create, name='create_channel'),
     path('chatapp/channels/<int:channels_id>/',views.load_channel, name='view_channel'),
-    path('chatapp/channels/<int:channels_id>/delete',views.message_delete, name='del_message'),
+    path('chatapp/channels/<int:message_id>/delete',views.message_delete, name='del_message'),
     
     path('chatapp/channels/submit_message/',views.message_create, name='new_message'),
     
