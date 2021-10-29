@@ -17,4 +17,6 @@ urlpatterns = [
     
     path('myhome/<int:channels_id>/', views.channel_detail, name="channel"),
     path('chatapp/contacts', views.load_contacts, name='contacts'),
+    path('chatapp/channels/<int:channels_id>/edit', views.channel_edit, name='edit_channel'),
+    path('chatapp/channels/<int:channels_id>/update/', views.channel_update, name='update_channel'),
 ]

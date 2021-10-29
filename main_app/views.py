@@ -101,3 +101,13 @@ def load_contacts(request):
         creator_id=request.user.id).select_related("friend_set").values()
     print("its contacts:", contact)
     return render(request, 'contacts/all.html', {"contact": contact})
+
+
+def channel_edit(request, channels_id):
+    return render (request, 'channels/edit_channel.html', {"channels_id": channels_id})
+
+def channel_update(request, channels_id):
+    channel = Channel.objects.get(id=channels_id)
+    channel.name = request.POST['name']
+    channel.save()
+    return redirect(f'/chatapp/channels/{channel.id}', {"channels_id": channels_id})
