@@ -56,11 +56,6 @@ def channel_create(request):
     return redirect(f'/chatapp/channels/{createchannel.id}')
 
 
-def channel_edit(request, channels_id):
-    editchannel = Channel.objects.get(id=channels_id)
-    return render(request, 'channels/edit.html', {'channel': editchannel})
-
-
 def channel_update(request, channels_id):
     updatechannel = Channel.objects.get(id=channels_id)
     updatechannel.name = request.POST['name']
@@ -126,3 +121,7 @@ def load_contacts(request):
         contactdetail.append(case)
 
     return render(request, 'contacts/all.html', {"contacts": contacts,  "contactdetail": contactdetail})
+
+
+def channel_edit(request, channels_id):
+    return render(request, 'channels/edit_channel.html', {"channels_id": channels_id})

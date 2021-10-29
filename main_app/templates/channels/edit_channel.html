@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<h5 class="grey-text text-lighten-2">Change channel name</h5>
+      <div class="row grey-text text-lighten-4">
+        <form method="POST" action="update/">
+          {% csrf_token %}
+          <div class="form-group">
+            Name: <input class="form-control grey-text text-lighten-2" name="name" />
+          </div>
+          <button class="btn btn-primary py-3 px-5" type="submit">
+            Confirm
+          </button>
+        </form>
+      </div>
+ 
+{% endblock %}
