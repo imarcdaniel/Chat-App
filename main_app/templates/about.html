@@ -1,37 +1,83 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content %}
-<h5 class="grey-text text-lighten-2" > Our Team of Developers</h5>
+{% extends 'base.html' %} {% load static %} {% block content %}
+<h5 class="grey-text text-lighten-2">Our Team of Developers</h5>
 <div class="row">
-    <div class="col s10">
-        <div class="card-panel grey">
-            <h6 >Eric</h6>
-        </div>
-    </div>
-</div>
-    <div class="row">
-        <div class="col s10 offset-s3 hovrable"><div class="card-panel grey">
-            
-            <div class="col s2">
-                <h6 >Marc</h6>
-                <img src="{% static 'images/pgn-sml.png' %}" alt="" class="  circle responsive-img">
-            </div>
-            <p >I love to dig into problems and solve them with modern technology. I can create, optimize and scale business processes that matter. To accomplish this, I focus on delivering key outcomes, building from feedback and quickly adapting to new learnings.My background screams diversity. Whether in pharmaceutical, food production or aerospace, my goal has always been to assess processes, analyze them, educate, digitize it and drive change across all functional areas.That’s how I quickly realized how enjoyable IT projects are. To dig deeper into this passion, I took a Business Analyst Diploma at HEC, and SAP (Terp10) on my own to be able to walk the talk. In my role across these industries, I have developed a problem-solving attitude, enhanced analytical thinking by wearing different hats on various projects. From requirement elicitation, facilitating meetings, to elaborate regulatory documentation and provide UAT support. I’ve seen a great deal of the SDLC. Whether when we reduced our deviations by 30% following adherence Health Canada standard by implementing an eDMS or when we successfully got our main quality process integrated to our ERP via SAP QM. I stand in amazement at how digital transformation turns caterpillars into butterflies. I enjoy meeting new people and hearing new perspectives. Reach out if you want to talk about an SAP Implementation role, the Lean Startup Circle, Emerging Tech or why FC Barcelona is the greatest team in the world.</p>
+  <div class="col s10 hoverable">
+    <div class="card-panel grey">
 
+        <div class="col s2">
+            <h6>Eric</h6>
+            <img
+          src="{% static 'images/pgn-sml.png' %}"
+          alt=""
+          class="circle responsive-img"
+        />
+        <p>Hello! I'm Eric Chan, a passionate always learning Full-Stack web developer. I am a civil engineering postgraduate student from Lakehead University. My passion for software lies in solving problems and building software for others. I am also completing the software engineering immersive from General Assembly. I currently am working on Full-Stack web applications and striving to become a better software engineer.</p>
         </div>
-    </div>
-</div>
-    <div class="row">
-        <div class="col s10"><div class="card-panel grey">
 
-            <div class="col s2">
-                <h6 >Tara</h6>
-                <img src="{% static 'images/pgn-sml.png' %}" alt="" class="  circle responsive-img">
-            </div>
-            <p >I’m a full stack developer with a background in various industries such as Business, Legal Consultancy and Makeup Artistry. I found software development merging all three areas of my interest and skill set involving creativity, logistics and analytics.</p>
-            <p>I am passionate about lifelong learning and solving puzzles which is how I describe my development style.</p>
-        </div>
-        </div>
+    
     </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col s10 offset-s3 hovrable">
+    <div class="card-panel grey">
+      <div class="col s2">
+        <h6>Marc</h6>
+        <img
+          src="{% static 'images/pgn-sml.png' %}"
+          alt=""
+          class="circle responsive-img"
+        />
+      </div>
+      <p>
+        I love to dig into problems and solve them with modern technology. I can
+        create, optimize and scale business processes that matter. To accomplish
+        this, I focus on delivering key outcomes, building from feedback and
+        quickly adapting to new learnings.My background screams diversity.
+        Whether in pharmaceutical, food production or aerospace, my goal has
+        always been to assess processes, analyze them, educate, digitize it and
+        drive change across all functional areas.That’s how I quickly realized
+        how enjoyable IT projects are. To dig deeper into this passion, I took a
+        Business Analyst Diploma at HEC, and SAP (Terp10) on my own to be able
+        to walk the talk. In my role across these industries, I have developed a
+        problem-solving attitude, enhanced analytical thinking by wearing
+        different hats on various projects. From requirement elicitation,
+        facilitating meetings, to elaborate regulatory documentation and provide
+        UAT support. I’ve seen a great deal of the SDLC. Whether when we reduced
+        our deviations by 30% following adherence Health Canada standard by
+        implementing an eDMS or when we successfully got our main quality
+        process integrated to our ERP via SAP QM. I stand in amazement at how
+        digital transformation turns caterpillars into butterflies. I enjoy
+        meeting new people and hearing new perspectives. Reach out if you want
+        to talk about an SAP Implementation role, the Lean Startup Circle,
+        Emerging Tech or why FC Barcelona is the greatest team in the world.
+      </p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col s10">
+    <div class="card-panel grey">
+      <div class="col s2">
+        <h6>Tara</h6>
+        <img
+          src="{% static 'images/pgn-sml.png' %}"
+          alt=""
+          class="circle responsive-img"
+        />
+      </div>
+      <p>
+        I’m a full stack developer with a background in various industries such
+        as Business, Legal Consultancy and Makeup Artistry. I found software
+        development merging all three areas of my interest and skill set
+        involving creativity, logistics and analytics.
+      </p>
+      <p>
+        I am passionate about lifelong learning and solving puzzles which is how
+        I describe my development style.
+      </p>
+    </div>
+  </div>
+</div>
 
 {% endblock %}
